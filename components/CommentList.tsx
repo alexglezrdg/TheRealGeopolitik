@@ -23,17 +23,4 @@ export function CommentList({ postId }: { postId: string }) {
   );
 }
 
-export function CommentForm() {
-  return (
-    <form className="space-y-2" onSubmit={(e) => e.preventDefault()}>
-      <textarea
-        className="w-full border rounded p-2"
-        rows={4}
-        placeholder="Write a comment (mock, not saved)"
-      />
-      <button className="border rounded px-3 py-1 text-sm" type="submit">
-        Post comment
-      </button>
-    </form>
-  );
-}
+// form moved to its own file

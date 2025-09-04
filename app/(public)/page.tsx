@@ -4,6 +4,7 @@ import { posts } from "@/data/posts";
 import { tags } from "@/data/tags";
 import { PostCard } from "@/components/PostCard";
 import { BLUR_DATA_URL } from "@/lib/utils";
+import { SectionHeading } from "@/components/SectionHeading";
 
 export default function HomePage() {
   const [featured, ...latest] = posts;
@@ -37,7 +38,7 @@ export default function HomePage() {
         </section>
       )}
       <section className="space-y-3">
-        <h2 className="font-semibold">Latest</h2>
+        <SectionHeading kicker="Latest" title="Fresh analysis" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {latest.map((p) => (
             <PostCard key={p.id} post={p} />
@@ -45,7 +46,7 @@ export default function HomePage() {
         </div>
       </section>
       <section className="space-y-3">
-        <h2 className="font-semibold">Trending</h2>
+        <SectionHeading kicker="Highlights" title="Trending" />
         <div className="flex flex-wrap gap-2 text-sm">
           {posts.slice(0, 5).map((p) => (
             <Link
@@ -59,15 +60,15 @@ export default function HomePage() {
         </div>
       </section>
       <section className="space-y-3">
-        <h2 className="font-semibold">Tags</h2>
+        <SectionHeading kicker="Browse" title="Tags" />
         <div className="flex flex-wrap gap-2">
-          {tags.map((t) => (
+      {tags.map((t) => (
             <Link
-              key={t}
+        key={t.slug}
               className="inline-flex items-center rounded-full border px-3 py-1 text-sm"
-              href={`/tag/${t}`}
+        href={`/tag/${t.slug}`}
             >
-              #{t}
+        #{t.name}
             </Link>
           ))}
         </div>

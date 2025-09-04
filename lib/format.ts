@@ -9,11 +9,12 @@ export function formatDate(date: string | Date, locale = "en-US") {
   }).format(d);
 }
 
-export function truncate(text: string, len = 140) {
-  if (!text) return "";
-  return text.length > len ? text.slice(0, len - 1) + "…" : text;
+export function excerptFromHtml(html: string, n = 160) {
+  if (!html) return "";
+  const text = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  return text.length > n ? text.slice(0, n - 1) + "…" : text;
 }
 
-export function canonical(pathname: string) {
+export function buildCanonical(pathname: string) {
   return new URL(pathname, BASE_URL).toString();
 }

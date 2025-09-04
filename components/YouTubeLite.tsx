@@ -1,14 +1,14 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { parseYouTubeId, youtubeThumb } from "@/lib/yt";
+import { getYouTubeId, thumbFromId } from "@/lib/yt";
 import { BLUR_DATA_URL } from "@/lib/utils";
 
 export function YouTubeLite({ url, title }: { url?: string; title?: string }) {
   const [play, setPlay] = useState(false);
-  const id = parseYouTubeId(url || "");
+  const id = getYouTubeId(url || "");
   if (!id) return null;
-  const thumb = youtubeThumb(id, "hq");
+  const thumb = thumbFromId(id, "hq");
   return (
     <div className="relative aspect-video w-full overflow-hidden rounded-lg border bg-black">
       {play ? (

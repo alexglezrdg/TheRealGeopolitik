@@ -1,4 +1,4 @@
-export function parseYouTubeId(url?: string): string | null {
+export function getYouTubeId(url?: string): string | null {
   if (!url) return null;
   try {
     const u = new URL(url);
@@ -13,7 +13,7 @@ export function parseYouTubeId(url?: string): string | null {
   return null;
 }
 
-export function youtubeThumb(
+export function thumbFromId(
   id?: string | null,
   size: "hq" | "mq" | "sd" = "hq"
 ) {
@@ -26,3 +26,7 @@ export function youtubeThumb(
         : "mqdefault.jpg";
   return `https://i.ytimg.com/vi/${id}/${file}`;
 }
+
+// Back-compat exports (can be removed if unused)
+export const parseYouTubeId = getYouTubeId;
+export const youtubeThumb = thumbFromId;

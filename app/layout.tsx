@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { SITE_NAME, BASE_URL, DEFAULT_OG_IMAGE } from "@/lib/site";
+import { SITE_NAME, BASE_URL, DEFAULT_OG, TW_HANDLE } from "@/lib/site";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -14,12 +14,12 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
-    images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630 }],
+  images: [{ url: DEFAULT_OG, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    creator: "@realgeopolitik",
-    images: [DEFAULT_OG_IMAGE],
+  creator: TW_HANDLE,
+  images: [DEFAULT_OG],
   },
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };

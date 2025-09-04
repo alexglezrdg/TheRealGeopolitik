@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Post } from "@/data/posts";
 import { BLUR_DATA_URL } from "@/lib/utils";
-import { PostMeta, TagBadge } from "./PostMeta";
+import { PostMeta } from "./PostMeta";
+import { TagBadge } from "./TagBadge";
 
 export function PostCard({ post }: { post: Post }) {
   return (
@@ -20,9 +21,9 @@ export function PostCard({ post }: { post: Post }) {
       </Link>
       <div className="p-4 space-y-2">
         <div className="flex flex-wrap gap-1">
-          {post.tags.slice(0, 3).map((t) => (
-            <div key={t}>
-              <TagBadge tag={t} />
+          {post.tags.slice(0, 3).map((slug) => (
+            <div key={slug}>
+              <TagBadge slug={slug} />
             </div>
           ))}
         </div>
