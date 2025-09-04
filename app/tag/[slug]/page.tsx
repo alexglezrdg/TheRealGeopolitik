@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { posts } from "@/data/posts";
+import { tagBySlug } from "@/data/tags";
 import { PostCard } from "@/components/PostCard";
 import { Pagination } from "@/components/Pagination";
 
@@ -11,13 +12,18 @@ export default function TagPage({
   params: { slug: string };
 }) {
   const page = Number(searchParams?.page || "1");
-  const perPage = 6;
-  const filtered = posts.filter((p) => p.tags.includes(params.slug));
+  const perPage = 9;
+  const filtered = posts
+    .filter((p) => p.tags.includes(params.slug))
+    .sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt));
   const start = (page - 1) * perPage;
   const subset = filtered.slice(start, start + perPage);
+  const tag = tagBySlug(params.slug);
   return (
     <div className="space-y-4">
-      <h1 className="text-2xl font-semibold">Tag: {params.slug}</h1>
+      <h1 className="text-2xl font-semibold">
+        {tag?.name || params.slug} · {filtered.length}
+      </h1>
       {subset.length === 0 ? (
         <p>No posts for this tag.</p>
       ) : (

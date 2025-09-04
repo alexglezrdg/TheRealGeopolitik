@@ -2,7 +2,7 @@ import { BASE_URL, SITE_NAME } from "./site";
 
 type Author = { name: string };
 
-type PostInput = {
+export type PostInput = {
   title: string;
   slug: string;
   excerpt?: string;
@@ -10,16 +10,14 @@ type PostInput = {
   coverImageUrl: string;
   publishedAt: string;
   author: Author;
+  youtubeUrl?: string;
 };
 
-export function articleJsonLd(
-  post: PostInput,
-  type: "Article" | "NewsArticle" = "NewsArticle"
-) {
+export function newsArticleJsonLd(post: PostInput) {
   const url = `${BASE_URL}/news/${post.slug}`;
   return {
     "@context": "https://schema.org",
-    "@type": type,
+    "@type": "NewsArticle",
     headline: post.title,
     description: post.excerpt,
     mainEntityOfPage: url,
@@ -38,7 +36,22 @@ export function articleJsonLd(
   };
 }
 
-export function breadcrumbJsonLd(items: { name: string; url: string }[]) {
+export function videoObjectJsonLd(post: PostInput) {
+  if (!post.youtubeUrl) return null as any;
+  const url = `${BASE_URL}/news/${post.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: post.title,
+    description: post.excerpt,
+    thumbnailUrl: [post.coverImageUrl],
+    uploadDate: post.publishedAt,
+    embedUrl: post.youtubeUrl,
+    url,
+  };
+}
+
+export function breadcrumbsJsonLd(items: { name: string; url: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

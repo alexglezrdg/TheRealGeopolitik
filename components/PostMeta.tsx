@@ -16,14 +16,3 @@ export function PostMeta({
     </div>
   );
 }
-
-export function TagBadge({ tag }: { tag: string }) {
-  return (
-    <Link
-      href={`/tag/${tag}`}
-      className="inline-flex items-center rounded-full border px-2 py-0.5 text-xs"
-    >
-      #{tag}
-    </Link>
-  );
-}

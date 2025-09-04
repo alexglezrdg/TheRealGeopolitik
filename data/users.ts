@@ -19,4 +19,6 @@ export const users: User[] = [
     image: "https://placehold.co/80x80",
   },
   { id: "u3", name: "Diego Alvarez", role: "READER" },
+  { id: "u4", name: "Sofia Petrova", role: "EDITOR", image: "https://placehold.co/80x80" },
+  { id: "u5", name: "Liam O'Connor", role: "READER" },
 ];
