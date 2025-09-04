@@ -11,19 +11,24 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "hsl(0 0% 100%)",
-        foreground: "hsl(222.2 47.4% 11.2%)",
-        muted: "hsl(210 40% 96%)",
-        border: "hsl(214 32% 91%)",
-        card: "hsl(0 0% 100%)",
-        primary: {
-          DEFAULT: "hsl(222.2 47.4% 11.2%)",
-          foreground: "hsl(210 40% 98%)",
-        },
-        secondary: {
-          DEFAULT: "hsl(210 40% 96%)",
-          foreground: "hsl(222.2 47.4% 11.2%)",
-        },
+        background: '#ffffff',
+        foreground: 'var(--ink)',
+        muted: 'var(--muted-ink)',
+        border: 'var(--rule)',
+        card: '#ffffff',
+        brand: 'var(--brand-bg)',
+        link: 'var(--link)',
+        accent: 'var(--accent)'
+      },
+      fontFamily: {
+        serif: ['Cormorant Garamond', 'ui-serif', 'Georgia', 'serif'],
+        sans: ['Inter', 'ui-sans-serif', 'system-ui']
+      },
+      fontSize: {
+        base: ['18px', { lineHeight: '1.7' }],
+        'display-1': ['56px', { lineHeight: '1.05', letterSpacing: '-0.01em' }],
+        'display-2': ['36px', { lineHeight: '1.1', letterSpacing: '-0.01em' }],
+        'display-3': ['24px', { lineHeight: '1.2' }]
       },
       container: {
         center: true,

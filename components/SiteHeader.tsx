@@ -1,40 +1,25 @@
-import Link from "next/link";
-import { tags } from "@/data/tags";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
+import Link from 'next/link'
+import { SmallCapsNav } from './editorial/Nav'
 
 export function SiteHeader() {
   return (
-    <header className="border-b bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/40 sticky top-0 z-40">
-      <div className="container flex h-14 items-center justify-between gap-4">
-        <Link href="/" className="font-semibold tracking-tight">
-          The Real Geopolitik
-        </Link>
-        <nav className="hidden sm:flex items-center gap-4 text-sm">
-          <Link href="/">Home</Link>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button className="h-8 px-2">Tags</Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56 max-h-64 overflow-auto">
-              {tags.map((t) => (
-                <DropdownMenuItem key={t} asChild>
-                  <Link href={`/tag/${t}`}>#{t}</Link>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <Link href="/search">Search</Link>
-        </nav>
-        <div>
-          <Button className="h-8">Sign in</Button>
+    <header className="sticky top-0 z-40 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b">
+      <div className="container-wide py-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <button className="md:hidden border rule rounded px-2 py-1" aria-label="Open menu">☰</button>
+          </div>
+          <Link href="/" className="serif text-2xl tracking-tight">The Real Geopolitik</Link>
+          <div className="flex items-center gap-3">
+            <input aria-label="Search" placeholder="Search" className="hidden sm:block border rule rounded px-3 py-1.5 w-48" />
+            <button className="btn btn-accent hidden sm:inline-flex">Subscribe</button>
+            <button className="text-sm">Log In</button>
+          </div>
+        </div>
+        <div className="mt-3">
+          <SmallCapsNav />
         </div>
       </div>
     </header>
-  );
+  )
 }
