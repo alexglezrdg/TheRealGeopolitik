@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --radius: 0.5rem;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: theme('colors.background');
+  color: theme('colors.foreground');
+}
+
+img {
+  color: transparent;
+}
